@@ -1,0 +1,55 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    </head>
+    <body>
+
+        <!-- Formulário de Cadastro -->
+        <section id="cadastro-section">
+            <h1>Cadastro de Funcionários:</h1>
+            <form id="formulario">  
+                <label for="id">ID:</label><br>
+                <input type="text" id="input_id" name="id" readonly disabled><br><br>
+
+                <label for="nome">Nome:</label><br>
+                <input type="text" id="input_nome" name="nome" required><br><br>
+
+                <label for="cargoId">Cargo:</label><br>
+                <select name="cargo" id="select-cargo" required>
+                    <option value="">Carregando ⏳️</option>
+                </select><br><br>
+
+                <label for="telefone">Telefone:</label><br>
+                <input type="tel" id="input_telefone" name="telefone" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="input_email" name="email" required><br><br>
+
+                <label for="data_nascimento">Data de Nascimento:</label><br>
+                <input type="date" id="input_data_nascimento" name="data_nascimento" required><br><br>
+
+                <label for="senha">Senha:</label><br>
+                <input type="password" id="input_senha" name="senha" required><br><br>
+
+                <label for="confirmar_senha">Confirmar Senha:</label><br>
+                <input type="password" id="input_confirmar_senha" name="confirmar_senha" required><br><br>
+
+                <button id="btn-submit" type="submit" disabled>Cadastrar</button>
+            </form>
+        </section>
+
+        <section>
+            <h1>Funcionários Cadastrados: </h1>
+            <label for="input_pesquisa">Pesquisar Funcionário:</label><br>
+            <input type="text" id="input_pesquisa" placeholder="Digite o nome do funcionário">
+            <ul id="ul-funcionarios">
+                <li><i>Carregando ⏳️</i></li>
+            </ul>
+        </section>
+
+        <script src="script.js"></script>
+    </body>
+    </html>
