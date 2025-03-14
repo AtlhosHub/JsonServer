@@ -1,55 +1,154 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1611762348135-5b09d2f0390d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-height: 500px; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #17778D;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: not-allowed;
+            margin-top: 15px;
+        }
+
+        button:enabled {
+            cursor: pointer;
+            background-color: #17778D;
+        }
+
+        #input_pesquisa {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            flex: 1;
+            overflow-y: auto;
+            max-height: 500px; 
+        }
+
+        li {
+            background: #e9ecef;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
         <!-- Formulário de Cadastro -->
         <section id="cadastro-section">
-            <h1>Cadastro de Funcionários:</h1>
+            <h1>CADASTRO DE FUNCIONÁRIOS</h1>
             <form id="formulario">  
-                <label for="id">ID:</label><br>
-                <input type="text" id="input_id" name="id" readonly disabled><br><br>
+                <label for="id">ID:</label>
+                <input type="text" id="input_id" name="id" readonly disabled>
 
-                <label for="nome">Nome:</label><br>
-                <input type="text" id="input_nome" name="nome" required><br><br>
+                <label for="nome">Nome:</label>
+                <input type="text" id="input_nome" name="nome" required>
 
-                <label for="cargoId">Cargo:</label><br>
+                <label for="cargoId">Cargo:</label>
                 <select name="cargo" id="select-cargo" required>
                     <option value="">Carregando ⏳️</option>
-                </select><br><br>
+                </select>
 
-                <label for="telefone">Telefone:</label><br>
-                <input type="tel" id="input_telefone" name="telefone" required><br><br>
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="input_telefone" name="telefone" required>
 
-                <label for="email">Email:</label><br>
-                <input type="email" id="input_email" name="email" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="input_email" name="email" required>
 
-                <label for="data_nascimento">Data de Nascimento:</label><br>
-                <input type="date" id="input_data_nascimento" name="data_nascimento" required><br><br>
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" id="input_data_nascimento" name="data_nascimento" required>
 
-                <label for="senha">Senha:</label><br>
-                <input type="password" id="input_senha" name="senha" required><br><br>
+                <label for="senha">Senha:</label>
+                <input type="password" id="input_senha" name="senha" required>
 
-                <label for="confirmar_senha">Confirmar Senha:</label><br>
-                <input type="password" id="input_confirmar_senha" name="confirmar_senha" required><br><br>
+                <label for="confirmar_senha">Confirmar Senha:</label>
+                <input type="password" id="input_confirmar_senha" name="confirmar_senha" required>
 
                 <button id="btn-submit" type="submit" disabled>Cadastrar</button>
             </form>
         </section>
 
+        <!-- Lista de Funcionários -->
         <section>
-            <h1>Funcionários Cadastrados: </h1>
-            <label for="input_pesquisa">Pesquisar Funcionário:</label><br>
+            <h1>FUNCIONÁRIOS CADASTRADOS</h1>
+            <label for="input_pesquisa">Pesquisar Funcionário:</label>
             <input type="text" id="input_pesquisa" placeholder="Digite o nome do funcionário">
             <ul id="ul-funcionarios">
                 <li><i>Carregando ⏳️</i></li>
             </ul>
         </section>
+    </div>
 
-        <script src="script.js"></script>
-    </body>
-    </html>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1691162319970-2f5b750163d3?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+}
+
+#login-section {
+    background: rgba(185, 185, 185, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgba(133, 128, 128, 0.2);
+    backdrop-filter: blur(5px);
+    width: 350px;
+    text-align: left;
+    border: 1px solid rgba(56, 55, 55, 0.589);
+}
+
+h1 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    text-align: left;
+    background: rgb(255, 255, 255);
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.589);
+}
+
+input::placeholder {
+    color: rgb(0, 0, 0);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #17778D;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background:  #0b4d5c;;
+    color: white;
+    transition: 0.3s;
+}
