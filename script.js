@@ -84,29 +84,38 @@ if (formCadastro) {
   };
 
   const verificarCampos = () => {
-      const emailValido = validarEmail(input_email.value);
-      const senhaForte = validarSenhaForte(input_senha.value);
-      const senhasIguais = input_senha.value === input_confirmar_senha.value;
+    const emailValido = validarEmail(input_email.value);
+    let senhaForteValida = true;
+    let senhasIguais = true;
 
-      if (
-          input_nome.value &&
-          input_telefone.value &&
-          emailValido &&
-          input_data_nascimento.value &&
-          select_cargo.value &&
-          senhaForte &&
-          senhasIguais
-      ) {
-          botao_submit.removeAttribute('disabled');
-      } else {
-          botao_submit.setAttribute('disabled', 'true');
-      }
-  };
+    if (!input_senha.disabled) {
+        senhaForteValida = validarSenhaForte(input_senha.value);
+        senhasIguais = input_senha.value === input_confirmar_senha.value;
+    }
+
+    if (
+        input_nome.value &&
+        input_telefone.value &&
+        emailValido &&
+        input_data_nascimento.value &&
+        select_cargo.value &&
+        senhaForteValida &&
+        senhasIguais
+    ) {
+        botao_submit.removeAttribute('disabled');
+    } else {
+        botao_submit.setAttribute('disabled', 'true');
+    }
+};
 
   input_telefone.addEventListener('input', () => aplicarMascaraTelefone(input_telefone));
   input_email.addEventListener('input', verificarEmail);
   input_senha.addEventListener('input', verificarSenha);
   input_confirmar_senha.addEventListener('input', verificarConfirmarSenha);
+  input_nome.addEventListener('input', verificarCampos);
+    input_data_nascimento.addEventListener('input', verificarCampos);
+    select_cargo.addEventListener('change', verificarCampos);
+
 
   input_email.addEventListener('focus', () => emailValidationMessage.style.display = 'block');
   input_email.addEventListener('blur', () => emailValidationMessage.style.display = validarEmail(input_email.value) ? 'none' : 'block');
@@ -129,16 +138,19 @@ if (formCadastro) {
   });
 
   const limparCampos = () => {
-      input_id.value = "";
-      input_nome.value = '';
-      input_telefone.value = '';
-      input_email.value = '';
-      input_data_nascimento.value = '';
-      select_cargo.value = '';
-      input_senha.value = '';
-      input_confirmar_senha.value = '';
-      verificarCampos();
-  };
+    input_id.value = "";
+    input_nome.value = '';
+    input_telefone.value = '';
+    input_email.value = '';
+    input_data_nascimento.value = '';
+    select_cargo.value = '';
+    input_senha.value = '';
+    input_confirmar_senha.value = '';
+    input_senha.disabled = false;
+    input_confirmar_senha.disabled = false;
+    verificarCampos();
+};
+
 
   const postFuncionario = () => {
       const nome = input_nome.value;
@@ -173,37 +185,30 @@ if (formCadastro) {
   };
 
   const updateFuncionario = (id) => {
-      const nome = input_nome.value;
-      const telefone = input_telefone.value;
-      const email = input_email.value;
-      const data_nascimento = input_data_nascimento.value;
-      const cargoId = select_cargo.value;
-      const senha = input_senha.value;
+    const nome = input_nome.value;
+    const telefone = input_telefone.value;
+    const email = input_email.value;
+    const data_nascimento = input_data_nascimento.value;
+    const cargoId = select_cargo.value;
 
-      if (senha !== input_confirmar_senha.value) {
-          alert('As senhas não coincidem!');
-          return;
-      }
+    const funcionarioAtualizado = { nome, telefone, email, data_nascimento };
+    funcionarioAtualizado.cargo = { id: cargoId };
 
-      const funcionarioAtualizado = { nome, telefone, email, data_nascimento, senha };
-      funcionarioAtualizado.cargo = { id: cargoId };
+    console.log("Atualizando funcionário:", funcionarioAtualizado);
 
-      console.log("Atualizando funcionário:", funcionarioAtualizado);
-
-      fetch(`http://localhost:3000/funcionarios/${id}`, {
-          body: JSON.stringify(funcionarioAtualizado),
-          method: "PUT",
-          headers: { "Content-Type": "application/json" }
-      })
-          .then((res) => {
-              console.log("Funcionário atualizado:", res);
-              getFuncionarios();
-          })
-          .catch((error) => {
-              console.error(error);
-          });
-  };
-
+    fetch(`http://localhost:3000/funcionarios/${id}`, {
+        body: JSON.stringify(funcionarioAtualizado),
+        method: "PUT",
+        headers: { "Content-Type": "application/json" }
+    })
+        .then((res) => {
+            console.log("Funcionário atualizado:", res);
+            getFuncionarios();
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
   function getCargos() {
       fetch("http://localhost:3000/cargos")
           .then((res) => res.json())
@@ -251,23 +256,27 @@ if (formCadastro) {
   }
 
   window.editarFuncionario = (id) => {
-      fetch(`http://localhost:3000/funcionarios/${id}`)
-          .then((res) => res.json())
-          .then((funcionario) => {
-              input_id.value = funcionario.id;
-              input_nome.value = funcionario.nome;
-              input_telefone.value = funcionario.telefone;
-              input_email.value = funcionario.email;
-              input_data_nascimento.value = funcionario.data_nascimento;
-              select_cargo.value = funcionario.cargo.id;
-              input_senha.value = funcionario.senha;
-              input_confirmar_senha.value = funcionario.senha;
-              input_nome.focus();
-          })
-          .catch((error) => {
-              console.error(error);
-          });
-  };
+    fetch(`http://localhost:3000/funcionarios/${id}`)
+        .then((res) => res.json())
+        .then((funcionario) => {
+            input_id.value = funcionario.id;
+            input_nome.value = funcionario.nome;
+            input_telefone.value = funcionario.telefone;
+            input_email.value = funcionario.email;
+            input_data_nascimento.value = funcionario.data_nascimento;
+            select_cargo.value = funcionario.cargo.id;
+            input_senha.value = '';
+            input_confirmar_senha.value = '';
+            input_senha.disabled = true;
+            input_confirmar_senha.disabled = true;
+
+            input_nome.focus();
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
 
   function deleteFuncionario(id) {
       fetch(`http://localhost:3000/funcionarios/${id}`, {

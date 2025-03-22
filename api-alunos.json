@@ -23,59 +23,36 @@
   ],
   "funcionarios": [
     {
-      "id": "102",
-      "nome": "Maria Santos",
-      "telefone": "987654321",
-      "email": "maria.santos@email.com",
-      "senha": "senha456",
-      "data_nascimento": "1997-11-20",
-      "cargo": {
-        "id": 2,
-        "nome": "Assistente"
-      }
-    },
-    {
-      "id": "0811",
-      "nome": "Thomas Albuquerque",
-      "telefone": "11969766332",
-      "email": "thomyx65@gmail.com",
-      "data_nascimento": "2005-06-16",
-      "senha": "gatos",
+      "id": "cfab",
+      "nome": "Juliana Murakami",
+      "telefone": "(11) 91554-2906",
+      "email": "murakami@gmail.com",
+      "data_nascimento": "2025-03-22",
+      "senha": "Murakami17*",
       "cargo": {
         "id": "1"
       }
     },
     {
-      "id": "08d9",
-      "nome": "Penelope Charmosa",
-      "telefone": "11908787653",
-      "email": "penelope@gmail.com",
-      "data_nascimento": "2005-11-14",
-      "senha": "1606",
+      "id": "1917",
+      "nome": "Carolina Camargo",
+      "telefone": "(11) 96976-6332",
+      "email": "camargo@gmail.com",
+      "data_nascimento": "1999-11-09",
+      "senha": "Carolina09*",
       "cargo": {
         "id": "4"
       }
     },
     {
-      "id": "cf91",
-      "nome": "Salamandra Junior",
-      "telefone": "(11) 90878-7653",
-      "email": "salamandra@gmail.com",
-      "data_nascimento": "2005-06-16",
-      "senha": "LINDINHa123*",
+      "id": "865c",
+      "nome": "Cauã Gouvea ",
+      "telefone": "(11) 87652-3456",
+      "email": "gouvea@gmail.com",
+      "data_nascimento": "2006-03-07",
+      "senha": "Gouvea07*",
       "cargo": {
-        "id": "3"
-      }
-    },
-    {
-      "id": "722c",
-      "nome": "Felix Zona",
-      "telefone": "(11) 98978-8770",
-      "email": "felix@gmail.com",
-      "data_nascimento": "2005-06-16",
-      "senha": "LINDINHa123*",
-      "cargo": {
-        "id": "2"
+        "id": "1"
       }
     }
   ]
